@@ -1,0 +1,106 @@
+﻿@model MicTest.Models.AirTicket
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>AirTicket</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.From)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.From)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.To)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.To)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Provider)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Provider)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Departure)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Departure)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Arrival)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Arrival)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Registration)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Registration)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Document.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Document.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Document)
+        </dt>
+        <dd class="col-sm-10">
+            <table class="table">
+                <tr>
+                    <th>Type</th>
+                    <th>Number</th>
+                    <th>PassengerId</th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.Document.Type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Document.Number)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Document.PassengerId)
+                    </td>
+                </tr>
+            </table>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Document.Passenger)
+        </dt>
+        <dd class="col-sm-10">
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Patronymic</th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.Document.Passenger.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Document.Passenger.Surname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Document.Passenger.Patronymic)
+                    </td>
+                </tr>
+            </table>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

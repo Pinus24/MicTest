@@ -1,0 +1,112 @@
+﻿@model MicTest.Models.Passenger
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Passenger</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Patronymic)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Patronymic)
+        </dd>
+        <dt class="col-sm-2">
+            Document Id
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DocumentId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Document)
+        </dt>
+        <dd class="col-sm-10">
+            <table class="table">
+                <tr>
+                    <th>Number</th>
+                    <th>Type</th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.Document.Number)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Document.Type)
+                    </td>
+                </tr>
+            </table>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Document.AirTickets)
+        </dt>
+        <dd class="col-sm-10">
+            <form asp-action="Details" method="get">
+                <div class="form-actions no-color">
+                    <p>
+                        Find by date: 
+                        <input type="date" name="SearchDateFrom" value="@ViewData["CurrentFilterFrom"]" />
+                        -
+                        <input type="date" name="SearchDateTo" value="@ViewData["CurrentFilterTo"]" />
+                        <input type="submit" value="Search" class="btn btn-default" /> |
+                        <a asp-action="Details">Back to Full List</a>
+                    </p>
+                </div>
+            </form>
+            <table class="table">
+                <tr>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Arrival</th>
+                    <th>Departure</th>
+                    <th>Registration</th>
+                    <th>Provider</th>
+                </tr>
+                @foreach (var ticket in Model.Document.AirTickets)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => ticket.From)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => ticket.To)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => ticket.Arrival)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => ticket.Departure)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => ticket.Registration)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => ticket.Provider)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+ 
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
